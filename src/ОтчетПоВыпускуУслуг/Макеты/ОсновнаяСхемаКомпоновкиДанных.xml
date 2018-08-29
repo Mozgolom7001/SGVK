@@ -147,7 +147,6 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
 			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>КонецПериода</name>
@@ -166,7 +165,6 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
 			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ДатаНачала</name>
@@ -184,7 +182,6 @@
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ДатаОкончания</name>
@@ -202,7 +199,6 @@
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>Организация</name>
@@ -215,9 +211,8 @@
 			<valueType>
 				<TypeId xmlns="http://v8.1c.ru/8.1/data/core">c92a1124-c41e-42a4-bda7-3bbac9c6039e</TypeId>
 			</valueType>
-			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue"/>
+			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -236,7 +231,6 @@
 				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
 			</value>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<settingsVariant>
 			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
@@ -291,7 +285,21 @@
 			<userSettingID>c4eeb0ee-e010-4d10-83b0-c83a8aa68b56</userSettingID>
 		</dcscor:item>
 	</dataParameters>
-	<outputParameters/>
+	<outputParameters>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>МакетОформления</dcscor:parameter>
+			<dcscor:value xsi:type="xs:string">Зеленый</dcscor:value>
+		</dcscor:item>
+		<dcscor:item xsi:type="SettingsParameterValue">
+			<dcscor:parameter>Заголовок</dcscor:parameter>
+			<dcscor:value xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выпуск услуг в плановых ценах</v8:content>
+				</v8:item>
+			</dcscor:value>
+		</dcscor:item>
+	</outputParameters>
 	<item xsi:type="StructureItemGroup">
 		<groupItems>
 			<item xsi:type="GroupItemField">
