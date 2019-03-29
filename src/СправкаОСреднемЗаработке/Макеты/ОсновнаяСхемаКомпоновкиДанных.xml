@@ -71,11 +71,13 @@
 						</value>
 					</item>
 				</appearance>
+				<inputParameters/>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>СуммаВзаиморасчетов</dataPath>
 				<field>СуммаВзаиморасчетов</field>
 				<appearance/>
+				<inputParameters/>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ОрганизацияНаименованиеПолное</dataPath>
@@ -87,6 +89,7 @@
 					</d5p1:item>
 				</title>
 				<appearance/>
+				<inputParameters/>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>Организация</dataPath>
@@ -159,13 +162,12 @@
 			<query>ВЫБРАТЬ
 	ВзаиморасчетыССотрудниками.Сотрудник КАК Сотрудник,
 	НАЧАЛОПЕРИОДА(ВзаиморасчетыССотрудниками.Период, МЕСЯЦ) КАК Месяц,
-	СУММА(ВзаиморасчетыССотрудниками.СуммаВзаиморасчетов) КАК СуммаВзаиморасчетов
+	СУММА(ВзаиморасчетыССотрудниками.Сумма) КАК СуммаВзаиморасчетов
 ПОМЕСТИТЬ ВтНачисленияСотрудников
 ИЗ
-	РегистрНакопления.ВзаиморасчетыССотрудниками КАК ВзаиморасчетыССотрудниками
+	РегистрНакопления.ДанныеОНачисленияхДляРасчетаСреднегоЗаработкаОбщий КАК ВзаиморасчетыССотрудниками
 ГДЕ
-	ВзаиморасчетыССотрудниками.ГруппаНачисленияУдержанияВыплаты = &amp;ГруппаНачисленияУдержанияВыплаты
-	И ВзаиморасчетыССотрудниками.Сотрудник = &amp;Сотрудник
+	ВзаиморасчетыССотрудниками.Сотрудник = &amp;Сотрудник
 	И ВзаиморасчетыССотрудниками.Период МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
 
 СГРУППИРОВАТЬ ПО
@@ -320,7 +322,6 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
 			<expression>&amp;ПериодОтчета.ДатаНачала</expression>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ДатаОкончания</name>
@@ -339,22 +340,6 @@
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>true</useRestriction>
 			<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
-			<inputParameters/>
-		</parameter>
-		<parameter>
-			<name>ГруппаНачисленияУдержанияВыплаты</name>
-			<title xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
-				<d4p1:item>
-					<d4p1:lang>ru</d4p1:lang>
-					<d4p1:content>Группа начисления удержания выплаты</d4p1:content>
-				</d4p1:item>
-			</title>
-			<valueType>
-				<TypeId xmlns="http://v8.1c.ru/8.1/data/core">db68003d-7e75-4e68-9914-abd01cc427af</TypeId>
-			</valueType>
-			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue">Перечисление.ГруппыНачисленияУдержанияВыплаты.Начислено</value>
-			<useRestriction>true</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>Сотрудник</name>
@@ -369,7 +354,6 @@
 			</valueType>
 			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ПериодОтчета</name>
@@ -388,7 +372,6 @@
 				<d4p1:endDate>0001-01-01T00:00:00</d4p1:endDate>
 			</value>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ВидАдреса</name>
@@ -403,7 +386,6 @@
 			</valueType>
 			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue">Справочник.ВидыКонтактнойИнформации.ЮрАдресОрганизации</value>
 			<useRestriction>true</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ВидТелефона</name>
@@ -418,7 +400,6 @@
 			</valueType>
 			<value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:DesignTimeValue">Справочник.ВидыКонтактнойИнформации.ТелефонОрганизации</value>
 			<useRestriction>true</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>Директор</name>
@@ -433,7 +414,6 @@
 			</valueType>
 			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ГлБухгалтер</name>
@@ -448,7 +428,6 @@
 			</valueType>
 			<value xsi:nil="true"/>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<parameter>
 			<name>ДатаВыдачи</name>
@@ -466,11 +445,15 @@
 			</valueType>
 			<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 			<useRestriction>false</useRestriction>
-			<inputParameters/>
 		</parameter>
 		<settingsVariant>
-			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">Основной</name>
-			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xsi:type="xs:string">Основной</presentation>
+			<name xmlns="http://v8.1c.ru/8.1/data-composition-system/settings">СправкаОСреднемЗаработке</name>
+			<presentation xmlns="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:d4p1="http://v8.1c.ru/8.1/data/core" xsi:type="d4p1:LocalStringType">
+				<d4p1:item>
+					<d4p1:lang>ru</d4p1:lang>
+					<d4p1:content>Справка о среднем заработке (Внешний отчет)</d4p1:content>
+				</d4p1:item>
+			</presentation>
 		</settingsVariant>
 	</dataCompositionSchema>
 </SchemaFile>﻿<?xml version="1.0" encoding="UTF-8"?>
@@ -667,6 +650,7 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">НаименованиеОрганизации</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
@@ -675,9 +659,11 @@
 									<d8p1:content> ИНН </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ИНН</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
@@ -686,9 +672,11 @@
 									<d8p1:content>/</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">КПП</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
@@ -697,9 +685,11 @@
 									<d8p1:content> </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">Адрес</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
@@ -708,9 +698,11 @@
 									<d8p1:content>, тел. </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">Телефон</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>0</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -747,6 +739,7 @@
 									<d8p1:content>Справка </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>8</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -769,6 +762,7 @@
 									<d8p1:content>о предоставлении средней заработной платы</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>9</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -791,9 +785,11 @@
 									<d8p1:content>за период с </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ДатаНачала</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:d8p1="http://v8.1c.ru/8.1/data/core" xsi:type="d8p1:LocalStringType">
@@ -802,9 +798,11 @@
 									<d8p1:content> по </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ДатаОкончания</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>10</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -836,6 +834,7 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">Сотрудник</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>11</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -890,6 +889,7 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаПрописью</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>12</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -926,6 +926,7 @@
 									<d8p1:content>Директор</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>13</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -938,6 +939,7 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">Директор</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>19</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -960,6 +962,7 @@
 									<d8p1:content>(фамилия, имя, отчество)</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>21</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -976,6 +979,7 @@
 									<d8p1:content>М.П.</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>14</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1009,6 +1013,7 @@
 									<d8p1:content>Гл. бухгалтер</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>13</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1021,6 +1026,7 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ГлБухгалтер</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>19</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1043,6 +1049,7 @@
 									<d8p1:content>(фамилия, имя, отчество)</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>21</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1056,12 +1063,14 @@
 									<d8p1:content>Дата выдачи</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>13</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ДатаВыдачи</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>14</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1095,6 +1104,7 @@
 									<d8p1:content>Исполнитель:</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>13</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1138,6 +1148,7 @@
 									<d8p1:content>Период</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>22</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1149,6 +1160,7 @@
 									<d8p1:content>Название источника дохода</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>23</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1160,6 +1172,7 @@
 									<d8p1:content>Сумма дохода</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>24</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1171,6 +1184,7 @@
 									<d8p1:content>Среднемесячный доход</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>25</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1217,6 +1231,7 @@
 									<d8p1:content>Итого:</d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>34</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1226,6 +1241,7 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаВзаиморасчетов</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>36</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1271,12 +1287,14 @@
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">ИсточникДоходов</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>39</dcsat:appIndex>
 					</dcsat:tableCell>
 					<dcsat:tableCell>
 						<dcsat:item xsi:type="dcsat:Field">
 							<dcsat:value xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xsi:type="dcscor:Parameter">СуммаВзаиморасчетов</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>40</dcsat:appIndex>
 					</dcsat:tableCell>
@@ -1288,6 +1306,7 @@
 									<d8p1:content> </d8p1:content>
 								</d8p1:item>
 							</dcsat:value>
+							<dcsat:appearance/>
 						</dcsat:item>
 						<dcsat:appIndex>41</dcsat:appIndex>
 					</dcsat:tableCell>
